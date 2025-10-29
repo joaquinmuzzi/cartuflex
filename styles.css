@@ -1,6 +1,16 @@
+/* Global CSS Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body{
-    background-color: yellow;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+    font-family: 'Inter', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2a2a2a;
+    min-height: 100vh;
 }
 
 .main{
@@ -8,24 +18,125 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav{
+.product-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.product-image-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 2rem;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.02);
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem;
+    background: linear-gradient(90deg, #2a2a2a, #4a4a4a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header{
+    width: 100vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    background: linear-gradient(90deg, #fff9e6 0%, rgba(255,222,120,0.6) 60%);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: saturate(1.05) blur(2px);
+    height: 6rem;
+}
+
+/* nav inside header */
+header nav{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* style nav buttons to look like rounded link pills */
+header nav button{
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.06);
+    color: #111;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+
+header nav button:hover{
+    transform: translateY(-3px);
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+header nav button:active{
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+/* subtle current/primary style — can be toggled by JS later */
+.nav-primary{
+    background: linear-gradient(90deg,#ffd54a,#ffb74d);
+    color: #2a2a2a;
+    border: none;
 }
 
 /* Logo animation: slide down while fading in */
 .logo{
     display: flex;
     align-items: center;
-    padding: 12px;
 }
 
 .logo .image{
-    width: 120px;
-    height: auto;
+    padding-top: .7rem;
+    width: 6rem;
+    height: 100%;
     /* start slightly up and invisible, then slide to natural position and fade in */
     transform: translateY(-20px);
     opacity: 0;
@@ -36,7 +147,7 @@ body{
 
 @keyframes slideFadeIn {
     from {
-        transform: translateY(-20px);
+        transform: translateY(-100px);
         opacity: 0;
     }
     to {
@@ -51,5 +162,159 @@ body{
         animation: none;
         transform: none;
         opacity: 1;
+    }
+}
+
+/* Contact Sidebar Styles */
+.contact-sidebar {
+    position: fixed;
+    right: -400px; /* Start hidden */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    background: white;
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1001;
+}
+
+.contact-sidebar.active {
+    right: 0;
+}
+
+.contact-toggle {
+    position: absolute;
+    left: -80px;
+    top: 80%;
+    transform: translateY(-50%) rotate(-90deg);
+    background: linear-gradient(90deg, #ffd54a, #ffb74d);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #2a2a2a;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container {
+    padding: 2rem;
+    height: 100%;
+}
+
+.contact-form-container h2 {
+    margin: 0 0 1.5rem;
+    color: #2a2a2a;
+    font-size: 1.5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffb74d;
+    box-shadow: 0 0 0 3px rgba(255, 183, 77, 0.1);
+}
+
+.submit-btn {
+    background: linear-gradient(90deg, #ffd54a, #ffb74d);
+    color: #2a2a2a;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 183, 77, 0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px){
+    .header{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.6rem;
+    }
+
+    header nav{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    header nav button{
+        padding: 0.45rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .contact-sidebar {
+        width: 100%;
+        right: -100%;
+        top: auto;
+        bottom: 0;
+        transform: none;
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .contact-toggle {
+        left: 50%;
+        bottom: 100%;
+        top: auto;
+        transform: translateX(-50%) rotate(0);
+        border-radius: 8px 8px 0 0;
+        padding: 8px 16px;
+    }
+
+    .product-showcase {
+        margin: 1rem auto;
+    }
+
+    .product-image-container {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .product-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 }

@@ -5,20 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CartuFlex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="logo">
-            <img class="image" src="./images/logo.png" alt="Cartuchera Flexible" srcset="">
+            <a href="#"><img class="image" src="./images/caruflex logo_preview_rev_1.png" alt="Cartuchera Flexible" srcset=""></a>
         </div>
         <nav>
-            <button>sobre nosotros</button>
-            <button>contacto</button>
+            <button>Descripción</button>
+            <button>Colaboración</button>
+            <button>Sobre Nosotros</button>
         </nav>
     </header>
     <div class="main">
-        <h1>CARTUFLEX</h1>
+        <div class="product-showcase">
+            <div class="product-image-container">
+                <img src="https://placehold.co/600x400/fff9e6/2a2a2a?text=CartuFlex+Product" alt="CartuFlex Product" class="product-image">
+            </div>
+            <h2 class="product-title">CartuFlex - Cartuchera Flexible Innovadora</h2>
+            <p class="product-description">
+                Descubre la revolución en cartucheras escolares. CartuFlex combina durabilidad y flexibilidad en un diseño 
+                innovador que se adapta a tus necesidades. Con materiales de alta calidad y un diseño pensado para 
+                estudiantes modernos, CartuFlex es más que una cartuchera - es tu compañera diaria para la creatividad y 
+                organización.
+            </p>
+        </div>
     </div>
+
+    <!-- Contact Form Sidebar -->
+    <div class="contact-sidebar" id="contactSidebar">
+        <button class="contact-toggle" id="contactToggle">
+            <span class="contact-toggle-text">Contáctanos</span>
+        </button>
+        
+        <div class="contact-form-container">
+            <h2>Contáctanos</h2>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
