@@ -3,7 +3,9 @@
     box-sizing: border-box;
 }
 
-body{
+body, html{
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
     background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
     font-family: 'Inter', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
@@ -14,6 +16,8 @@ body{
 }
 
 .main{
+    height: 100vh;
+    scroll-snap-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,6 +36,7 @@ body{
 }
 
 .product-image-container {
+
     width: 100%;
     max-width: 400px;
     margin-bottom: 2rem;
@@ -99,7 +104,7 @@ body{
     top: 0;
     z-index: 1000;
     backdrop-filter: saturate(1.05) blur(2px);
-    height: 6rem;
+    height: 4rem;
 }
 
 /* nav inside header */
@@ -332,6 +337,11 @@ header nav button:active{
 }
 
 /* Description Section Styles */
+
+section {
+    scroll-snap-align: start;
+}
+
 .description-section {
     padding: 4rem 2rem;
     background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
